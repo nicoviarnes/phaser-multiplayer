@@ -9,6 +9,9 @@ const Datauri = require('datauri');
 const datauri = new Datauri();
 const { JSDOM } = jsdom;
 
+const PORT = process.env.PORT || 3000;
+
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
@@ -31,7 +34,7 @@ function setupAuthoritativePhaser() {
     };
     dom.window.URL.revokeObjectURL = (objectURL) => {};
     dom.window.gameLoaded = () => {
-      server.listen(3000, function () {
+      server.listen(PORT, function () {
         console.log(`Listening on ${server.address().port}`);
       });
     };
